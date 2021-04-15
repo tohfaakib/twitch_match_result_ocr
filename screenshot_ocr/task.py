@@ -35,4 +35,4 @@ def start_tracking(tw_url, match_id):
             if counter >= 3:
                 break
 
-        time.sleep(5)
+        time.sleep(2)

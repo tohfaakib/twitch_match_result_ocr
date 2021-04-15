@@ -88,8 +88,11 @@ class Result(APIView):
         data = {}
         time, home_team, home_result, away_team, away_result, lines = [''] * 6
         if match_id:
-            with open(f'output/{match_id}.txt', 'r') as f:
-                lines = f.readlines()
+            try:
+                with open(f'output/{match_id}.txt', 'r') as f:
+                    lines = f.readlines()
+            except:
+                return Response({'success': False, 'message': f'Match with id {match_id} does not exist!'}, status=status.HTTP_404_NOT_FOUND)
 
             for line in lines:
                 if 'time' in line:

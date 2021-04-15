@@ -1,0 +1,6 @@
+screen= Final
+time= 90:00
+home_team= ATLÉTICO DE MADRID
+home_result= 2
+away_team= REAL MADRID
+away_result= 5

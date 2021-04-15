@@ -14,6 +14,7 @@ os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "utils/VARApp-500af3e88363.json"
 
 
 def get_screenshot(tw_url):
+    print("sssssssss")
     ss_token = 'Q76HQFG-HJ5MT8Y-KQTFTHN-MC9DY6K'
     fresh = True
     lazy_load = True
@@ -84,7 +85,8 @@ def get_live_result(text, match_id):
         print('home_result:', home_result)
         print('away_result:', away_result)
 
-        result = f'''time= {p_time}
+        result = f'''screen= Live
+time= {p_time}
 home_team= {home_team}
 home_result= {home_result}
 away_team= {away_team}
@@ -112,10 +114,21 @@ away_result= {away_result}
 
 def get_final_result(text, match_id):
     print("getting final result...")
+    print("===============")
+    print()
+    print(text)
+    print("===============")
+    print()
     if 'CALIFICACIONES' in text:
         text = text.split('CALIFICACIONES')[0]
     if '¿CONTINUAR SERIE?' in text:
         text = text.split('¿CONTINUAR SERIE?')[0]
+
+    print("===============")
+    print()
+    print(text)
+    print("===============")
+    print()
 
     time = ''
     home_team = ''
@@ -132,14 +145,17 @@ def get_final_result(text, match_id):
         for t in text.split('\n'):
             if t.isupper():
                 if any(chr.isdigit() for chr in t):
-                    if t[-1].isdigit():
-                        home_result = t[-1]
-                        home_team = t.replace(home_result, '').strip()
-                    if t[0].isdigit():
-                        away_result = t[0]
-                        away_team = t.replace(away_result, '').strip()
+                    if '-' in t:
+                        home, away = t.split('-')
+                        home = home.strip()
+                        home_result = home[-1].strip()
+                        home_team = home.replace(home_result, '').strip()
+                        away = away.strip()
+                        away_result = away[0].strip()
+                        away_team = away.replace(away_result, '').strip()
 
-        result = f'''time= {p_time}
+        result = f'''screen= Final
+time= {p_time}
 home_team= {home_team}
 home_result= {home_result}
 away_team= {away_team}
@@ -189,10 +205,20 @@ def do_ocr(screenshot_url):
     # texts = response.json()['text_annotations'
     text = response.json()['responses'][0]['textAnnotations'][0]['description']
     print('ocr done')
-    print("===========================")
-    print(text)
-    print("===========================")
+    # print("===========================")
+    # print(text)
+    # print("===========================")
     return text
+
+
+text = do_ocr('https://screenshotapi-dot-net.storage.googleapis.com/m_twitch_tv_soy_mandrake_32bae28367be.png')
+
+get_final_result(text, '87657')
+
+
+
+
+
 
 # counter = 0
 # def start_tracking(tw_url, match_id):
@@ -219,4 +245,4 @@ def do_ocr(screenshot_url):
 #
 #         time.sleep(5)
 #
-# start_tracking('https://m.twitch.tv/esbfootball2', '123')
+# start_tracking('https://www.twitch.tv/soy_mandrake', '123')
