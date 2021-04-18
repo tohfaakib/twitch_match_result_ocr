@@ -1,5 +1,0 @@
-time: 83:51
-home_team: ENG
-home_result: 2
-away_team: POR
-away_result: 2

@@ -1,5 +1,0 @@
-time= 90:00
-home_team= FRA
-home_result= 3
-away_team= FCB
-away_result= 4

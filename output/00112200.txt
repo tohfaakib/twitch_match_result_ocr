@@ -1,5 +1,0 @@
-time= 90:00
-home_team= ATL
-home_result= 2
-away_team= RMA
-away_result= 5

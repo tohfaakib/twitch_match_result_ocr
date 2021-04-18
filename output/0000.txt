@@ -1,0 +1,6 @@
+screen= Live
+time= 90:00
+home_team= BVB
+home_result= 1
+away_team= ATL
+away_result= 4

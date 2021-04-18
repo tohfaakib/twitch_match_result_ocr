@@ -1,5 +1,0 @@
-time: 11:50
-home_team: APP
-home_result: 2
-away_team: QXR
-away_result: 3

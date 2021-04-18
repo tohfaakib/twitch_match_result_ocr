@@ -86,7 +86,7 @@ class Result(APIView):
     def get(self, request, match_id):
         print('match id:', match_id)
         data = {}
-        time, home_team, home_result, away_team, away_result, lines = [''] * 6
+        time, home_team, home_result, away_team, away_result, lines, screen = [''] * 7
         if match_id:
             try:
                 with open(f'output/{match_id}.txt', 'r') as f:
@@ -106,8 +106,11 @@ class Result(APIView):
                     away_team = line.split('=')[1].strip()
                 if 'away_result' in line:
                     away_result = line.split('=')[1].strip()
+                if 'screen' in line:
+                    screen = line.split('=')[1].strip()
 
             data = {
+                'screen': screen,
                 'match_id': match_id,
                 'time': time,
                 'home_team': home_team,

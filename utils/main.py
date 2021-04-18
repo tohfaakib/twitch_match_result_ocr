@@ -211,9 +211,9 @@ def do_ocr(screenshot_url):
     return text
 
 
-text = do_ocr('https://screenshotapi-dot-net.storage.googleapis.com/m_twitch_tv_soy_mandrake_32bae28367be.png')
-
-get_final_result(text, '87657')
+# text = do_ocr('https://screenshotapi-dot-net.storage.googleapis.com/m_twitch_tv_soy_mandrake_32bae28367be.png')
+#
+# get_final_result(text, '87657')
 
 
 

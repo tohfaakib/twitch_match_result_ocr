@@ -1,5 +1,0 @@
-time: 11:48
-home_team: DXR
-home_result: 4
-away_team: END
-away_result: 4
