@@ -32,7 +32,7 @@ def start_tracking(tw_url, match_id):
                 counter = 0
 
             print("counter:", counter)
-            if counter >= 3:
+            if counter >= 8:
                 break
 
         time.sleep(2)
